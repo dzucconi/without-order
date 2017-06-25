@@ -1,28 +1,3 @@
-// star: bool
-// sides: 3-10
-// circle: bool
-
-// import { interpolate, toCircle, fromCircle } from 'flubber';
-
-// const generateInterpolator = (fromShape, toShape, surface) => {
-//   if (fromShape === 'circle') {
-
-//   } else if (toShape === 'circle') {
-//     return toCircle(shapeA.array().value, 300, 300, 290);
-//   } else {
-
-//   }
-
-
-// const shapeA = shapes.triangle(surface);
-
-//   const interpolator = toCircle(shapeA.array().value, 300, 300, 290);
-
-// };
-
-
-// interpolate.from('hexagon').to('triangle')
-
 import SVG from 'svg.js';
 import 'svg.shapes.js';
 import { interpolate, toCircle, fromCircle } from 'flubber';
