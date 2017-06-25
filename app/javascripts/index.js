@@ -14,7 +14,7 @@ export default () => {
   const color = randomColor();
 
   const interpolate = new Interpolate(DOM.app);
-  const interpolator = interpolate.from('triangle').to('circle');
+  const interpolator = interpolate.from('diamond').to('triangle');
 
   const face = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   face.setAttribute('width', '100%');
@@ -41,11 +41,24 @@ export default () => {
     path.style.transform = `translate(${dX}px, ${dY}px)`;
   };
 
-  transform(clock.progress());
-  clock.register(transform);
-
+  // Color
   path.setAttribute('stroke', color);
   Array.prototype.map.call(DOM.hands, el =>
     el.style.backgroundColor = color);
 
+  const size = () => {
+    const scalar = Math.min(
+      window.innerWidth / DOM.app.offsetWidth,
+      window.innerHeight / DOM.app.offsetHeight
+    );
+
+    DOM.app.style.transform = `translate(-50%, -50%) scale(${scalar})`;
+  };
+
+  window.addEventListener('resize', size);
+
+  // Bring into sync on load
+  size();
+  transform(clock.progress());
+  clock.register(transform);
 };
