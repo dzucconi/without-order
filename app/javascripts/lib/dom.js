@@ -1,4 +1,4 @@
-export const tag = (type, { id, klass, style } = {}, html) => {
+export const tag = (type, { id, klass, style, data } = {}, html) => {
   const el = document.createElement(type);
 
   if (id) el.id = id;
@@ -6,6 +6,11 @@ export const tag = (type, { id, klass, style } = {}, html) => {
   if (style) {
     Object.keys(style).map(key => {
       el.style[key] = style[key];
+    });
+  }
+  if (data) {
+    Object.keys(data).map(key => {
+      el.setAttribute(`data-${key}`, data[key]);
     });
   }
 

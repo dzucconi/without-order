@@ -19,7 +19,6 @@ export default class Interpolate {
 
   to(shape) {
     if (!this.fromShape) throw new Error('Must first populate `from`');
-    if (this.fromShape === shape) throw new Error('Must be different shapes');
 
     this.toShape = shape;
 

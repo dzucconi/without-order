@@ -16,22 +16,22 @@ body {
 
 body {
   background-color: white;
+  overflow: hidden;
 }
 
-.app {
+.App {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 600px;
   height: 600px;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%);
 }
-  .app > svg {
+  .App > svg {
     position: relative;
-    transform: scale(0.9);
   }
 
-.hand {
+.Hand {
   position: absolute;
   width: 2px;
   height: 300px;
@@ -42,3 +42,28 @@ body {
   transform: rotate(0deg) translate(-50%, -50%);
   transform-origin: 0 150px;
 }
+
+.Nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-family: sans-serif;
+}
+  .Nav > a {
+    display: block;
+    padding: 1em;
+    cursor: pointer;
+  }
+    .Nav > a:before {
+      content: '';
+      display: block;
+      width: 0.5em;
+      height: 0.5em;
+      background-color: gray;
+      border-radius: 50%;
+    }
+
+    .Nav > a:hover:before {
+      background-color: black;
+    }
+
