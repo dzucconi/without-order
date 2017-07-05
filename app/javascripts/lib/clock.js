@@ -57,11 +57,21 @@ export default class Clock {
   }
 
   start() {
-    this.interval = setInterval(() => this.tick(), 1);
+    if (this.running) return;
+
+    const tock = () => {
+      if (this.stopped) return;
+      this.tick();
+      window.requestAnimationFrame(tock);
+    };
+
+    window.requestAnimationFrame(tock);
+
+    this.running = true;
   }
 
-  stop() {
-    window.clearInteval(this.interval);
+  stop(boolean = true) {
+    this.stopped = boolean;
   }
 
   sethandRotation(hand) {
