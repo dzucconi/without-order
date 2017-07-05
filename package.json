@@ -11,8 +11,9 @@
     "test": "mocha test",
     "start": "brunch watch --server",
     "prod": "brunch build --production",
-    "sync": "s3-cli --config .s3config sync --delete-removed --acl-public public/ s3://work.damonzucconi.com/$npm_package_name",
-    "deploy": "npm run prod && npm run sync"
+    "sync": "aws s3 sync --acl public-read --sse --delete public/ s3://www.withoutorder.com",
+    "invalidate": "aws cloudfront create-invalidation --distribution-id E2YFRNRA90DGGA --paths '/*'",
+    "deploy": "yarn run prod && yarn run sync && yarn run invalidate"
   },
   "devDependencies": {
     "auto-reload-brunch": "^2.0.0",
