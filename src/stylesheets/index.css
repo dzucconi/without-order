@@ -27,9 +27,9 @@ body {
   height: 600px;
   transform: translate(-50%, -50%);
 }
-  .App > svg {
-    position: relative;
-  }
+.App > svg {
+  position: relative;
+}
 
 .Hand {
   position: absolute;
@@ -49,21 +49,20 @@ body {
   left: 0;
   font-family: sans-serif;
 }
-  .Nav > a {
-    display: block;
-    padding: 1em;
-    cursor: pointer;
-  }
-    .Nav > a:before {
-      content: '';
-      display: block;
-      width: 0.5em;
-      height: 0.5em;
-      background-color: gray;
-      border-radius: 50%;
-    }
+.Nav > a {
+  display: block;
+  padding: 1em;
+  cursor: pointer;
+}
+.Nav > a:before {
+  content: "";
+  display: block;
+  width: 0.5em;
+  height: 0.5em;
+  background-color: gray;
+  border-radius: 50%;
+}
 
-    .Nav > a:hover:before {
-      background-color: black;
-    }
-
+.Nav > a:hover:before {
+  background-color: black;
+}

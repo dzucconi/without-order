@@ -2,25 +2,25 @@ import params from 'queryparams';
 import Clock from './lib/clock';
 import Interpolate from './lib/interpolate';
 import rand from './lib/rand';
-import randomColor from './lib/random_color';
+import randomColor from './lib/randomColor';
 import * as shapes from './lib/shapes';
 
 window.params = params;
 
 const DOM = {
   app: document.getElementById('App'),
-  hands: document.getElementsByClassName('Hand'),
+  hands: document.getElementsByClassName('Hand')
 };
 
 const PARAMS = params({
   from: '',
   to: '',
-  color: randomColor(),
+  color: randomColor()
 });
 
 const STATE = {
   scalar: 1.0,
-  rendered: {},
+  rendered: {}
 };
 
 const render = ([fromShape, toShape], { color }) => {
@@ -41,8 +41,7 @@ const render = ([fromShape, toShape], { color }) => {
   DOM.app.appendChild(face);
 
   return {
-    remove: () =>
-      face.parentNode.removeChild(face),
+    remove: () => face.parentNode.removeChild(face),
 
     transform: progress => {
       // Reset path position
@@ -53,15 +52,17 @@ const render = ([fromShape, toShape], { color }) => {
 
       // Center path
       const rect = path.getBBox();
-      const dX = (path.parentNode.width.baseVal.value / 2) - (rect.width / 2) - rect.x;
-      const dY = (path.parentNode.height.baseVal.value / 2) - (rect.height / 2) - rect.y;
+      const dX =
+        path.parentNode.width.baseVal.value / 2 - rect.width / 2 - rect.x;
+      const dY =
+        path.parentNode.height.baseVal.value / 2 - rect.height / 2 - rect.y;
 
       path.style.transform = `translate(${dX}px, ${dY}px)`;
-    },
+    }
   };
 };
 
-export default () => {
+const init = () => {
   // Fill out params and redirect to the URL
   let redirect = false;
 
@@ -82,15 +83,18 @@ export default () => {
   clock.start();
 
   // Color
-  Array.prototype.map.call(DOM.hands, el =>
-    el.style.backgroundColor = PARAMS.color);
+  Array.prototype.map.call(
+    DOM.hands,
+    el => (el.style.backgroundColor = PARAMS.color)
+  );
 
   // Setup resizing
   const size = () => {
-    STATE.scalar = Math.min(
-      window.innerWidth / DOM.app.offsetWidth,
-      window.innerHeight / DOM.app.offsetHeight
-    ) * 0.88;
+    STATE.scalar =
+      Math.min(
+        window.innerWidth / DOM.app.offsetWidth,
+        window.innerHeight / DOM.app.offsetHeight
+      ) * 0.88;
 
     DOM.app.style.transform = `translate(-50%, -50%) scale(${STATE.scalar})`;
   };
@@ -110,3 +114,5 @@ export default () => {
 
   sync();
 };
+
+document.addEventListener('DOMContentLoaded', init);

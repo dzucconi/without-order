@@ -14,7 +14,6 @@ export const tag = (type, { id, klass, style, data } = {}, html) => {
     });
   }
 
-
   if (html) el.innerHTML = html;
 
   return el;

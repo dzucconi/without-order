@@ -1,8 +1,8 @@
-import SVG from 'svg.js';
-import 'svg.shapes.js';
-import { interpolate, toCircle, fromCircle } from 'flubber';
+import SVG from "svg.js";
+import "svg.shapes.js";
+import { interpolate, toCircle, fromCircle } from "flubber";
 
-import * as shapes from './shapes';
+import * as shapes from "./shapes";
 
 export default class Interpolate {
   constructor(el) {
@@ -18,11 +18,11 @@ export default class Interpolate {
   }
 
   to(shape) {
-    if (!this.fromShape) throw new Error('Must first populate `from`');
+    if (!this.fromShape) throw new Error("Must first populate `from`");
 
     this.toShape = shape;
 
-    if (this.fromShape === 'circle') {
+    if (this.fromShape === "circle") {
       const x = this.height / 2;
       const y = this.height / 2;
       const r = (x + y) / 2 - 2;
@@ -31,7 +31,7 @@ export default class Interpolate {
       return fromCircle(x, y, r, toShape.array().value);
     }
 
-    if (this.toShape === 'circle') {
+    if (this.toShape === "circle") {
       const x = this.height / 2;
       const y = this.height / 2;
       const r = (x + y) / 2 - 2;

@@ -8,36 +8,21 @@
     "url": "https://github.com/dzucconi/without-order"
   },
   "scripts": {
-    "test": "mocha test",
-    "start": "brunch watch --server",
-    "prod": "brunch build --production",
-    "sync": "aws s3 sync --acl public-read --sse --delete public/ s3://www.withoutorder.com",
-    "invalidate": "aws cloudfront create-invalidation --distribution-id E2YFRNRA90DGGA --paths '/*'",
-    "deploy": "yarn run prod && yarn run sync && yarn run invalidate"
+    "build": "parcel build src/index.html",
+    "dev": "parcel src/index.html --open",
+    "lint": "eslint --ext .js ./src --fix"
   },
   "devDependencies": {
-    "auto-reload-brunch": "^2.0.0",
-    "autoprefixer": "^6.5.0",
-    "babel-brunch": "~6.0.0",
-    "babel-core": "^6.17.0",
-    "babel-preset-es2015": "~6.3.13",
-    "brunch": "^2.10.0",
-    "clean-css-brunch": "^2.0.0",
-    "css-brunch": "^2.0.0",
-    "digest-brunch": "^1.6.0",
-    "eslint": "^3.7.1",
-    "javascript-brunch": "^2.0.0",
-    "mocha": "^3.1.0",
-    "postcss-brunch": "^2.0.3",
-    "s3-cli": "^0.13.0",
-    "should": "^11.1.0",
-    "uglify-js-brunch": "^2.0.0"
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "eslint": "^6.0.1",
+    "parcel": "^1.12.3"
   },
   "dependencies": {
-    "flubber": "^0.2.6",
-    "kute.js": "^1.6.2",
-    "queryparams": "0.0.7",
-    "svg.js": "^2.6.1",
-    "svg.shapes.js": "^0.0.1"
+    "flubber": "^0.4.2",
+    "kute.js": "^1.6.6",
+    "queryparams": "0.1.0",
+    "svg.js": "^2.7.1",
+    "svg.shapes.js": "^1.0.0"
   }
 }

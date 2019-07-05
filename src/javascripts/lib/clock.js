@@ -1,21 +1,17 @@
-import * as dom from './dom';
-import { real } from './mechanism';
+import * as dom from "./dom";
+import { real } from "./mechanism";
 
 export default class Clock {
   constructor(el, mechanism) {
     this.mechanism = mechanism || real;
 
     this.hands = {
-      hour: dom.tag('div', { klass: 'Hand' }),
-      minute: dom.tag('div', { klass: 'Hand' }),
-      second: dom.tag('div', { klass: 'Hand' }),
+      hour: dom.tag("div", { klass: "Hand" }),
+      minute: dom.tag("div", { klass: "Hand" }),
+      second: dom.tag("div", { klass: "Hand" })
     };
 
-    Object
-      .keys(this.hands)
-      .map(hand =>
-        el.appendChild(this.hands[hand])
-      );
+    Object.keys(this.hands).map(hand => el.appendChild(this.hands[hand]));
 
     this.registered = [];
 
@@ -23,19 +19,17 @@ export default class Clock {
   }
 
   tick() {
-    this.sethandRotation('hour');
-    this.sethandRotation('minute');
-    this.sethandRotation('second');
+    this.sethandRotation("hour");
+    this.sethandRotation("minute");
+    this.sethandRotation("second");
 
-    Object
-      .keys(this.registered)
-      .map(key =>
-        this.registered[key](this.progress())
-      );
+    Object.keys(this.registered).map(key =>
+      this.registered[key](this.progress())
+    );
   }
 
   now() {
-    return this.sethandRotation('second');
+    return this.sethandRotation("second");
   }
 
   progress() {
@@ -45,7 +39,7 @@ export default class Clock {
     const minutes = now.getMinutes() * 60;
     const seconds = now.getSeconds();
     const totalSeconds = hours + minutes + seconds;
-    return 100 * totalSeconds / secondsInADay;
+    return (100 * totalSeconds) / secondsInADay;
   }
 
   register(fn) {
@@ -80,24 +74,24 @@ export default class Clock {
     let hours, minutes, seconds, percentage, degree;
 
     switch (hand) {
-    case 'hour':
-      hours = now.getHours();
-      hand = this.hands.hour;
-      percentage = this.numberToPercentage(hours, 12.0);
-      break;
+      case "hour":
+        hours = now.getHours();
+        hand = this.hands.hour;
+        percentage = this.numberToPercentage(hours, 12.0);
+        break;
 
-    case 'minute':
-      minutes = now.getMinutes();
-      hand = this.hands.minute;
-      percentage = this.numberToPercentage(minutes, 60.0);
-      break;
+      case "minute":
+        minutes = now.getMinutes();
+        hand = this.hands.minute;
+        percentage = this.numberToPercentage(minutes, 60.0);
+        break;
 
-    case 'second':
-      seconds = now.getSeconds() + (now.getMilliseconds() / 1000.0);
-      hand = this.hands.second;
-      percentage = this.numberToPercentage(seconds, 60.0);
+      case "second":
+        seconds = now.getSeconds() + now.getMilliseconds() / 1000.0;
+        hand = this.hands.second;
+        percentage = this.numberToPercentage(seconds, 60.0);
 
-      break;
+        break;
     }
 
     degree = this.percentageToDegree(percentage);
