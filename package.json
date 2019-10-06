@@ -16,7 +16,7 @@
     "@babel/core": "7.6.2",
     "@babel/preset-env": "7.6.2",
     "eslint": "6.5.1",
-    "parcel": "1.12.3"
+    "parcel": "1.12.4"
   },
   "dependencies": {
     "flubber": "0.4.2",
