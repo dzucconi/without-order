@@ -13,8 +13,8 @@
     "lint": "eslint --ext .js ./src --fix"
   },
   "devDependencies": {
-    "@babel/core": "7.6.2",
-    "@babel/preset-env": "7.6.2",
+    "@babel/core": "7.6.3",
+    "@babel/preset-env": "7.6.3",
     "eslint": "6.5.1",
     "parcel": "1.12.4"
   },
