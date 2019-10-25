@@ -15,7 +15,7 @@
   "devDependencies": {
     "@babel/core": "7.6.4",
     "@babel/preset-env": "7.6.3",
-    "eslint": "6.5.1",
+    "eslint": "6.6.0",
     "parcel": "1.12.4"
   },
   "dependencies": {
