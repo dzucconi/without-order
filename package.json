@@ -21,7 +21,7 @@
   "dependencies": {
     "flubber": "0.4.2",
     "kute.js": "1.6.6",
-    "queryparams": "0.1.0",
+    "queryparams": "1.2.2",
     "svg.js": "2.7.1",
     "svg.shapes.js": "1.0.0"
   }
